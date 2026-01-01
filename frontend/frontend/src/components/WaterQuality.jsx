@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import api from "../services/api";
 
 export default function WaterQuality() {
@@ -17,7 +18,7 @@ export default function WaterQuality() {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) =>
-    setData({ ...data, [e.target.name]: e.target.value });
+    setData({ ...data, [e.target.name]: parseFloat(e.target.value) });
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -44,51 +45,43 @@ export default function WaterQuality() {
         overflowX: "hidden",
       }}
     >
-      {/* Top Header */}
-      <header className="py-4 text-center px-3">
-        <h1 className="display-4 display-md-3 fw-bold">
-          AI Water Quality Analysis
-        </h1>
-        <p className="lead mx-auto mb-0" style={{ maxWidth: "1200px" }}>
-          Ensure safe and potable water with our AI-powered water quality
-          prediction. Simple, fast, and reliable.
-        </p>
+      {/* Header */}
+      <header className="d-flex flex-column flex-md-row align-items-center justify-content-between py-4 px-3 mx-auto w-100" style={{ maxWidth: "1200px" }}>
+        <div>
+          <h1 className="display-5 fw-bold mb-2 mb-md-0">AI Water Quality Analysis</h1>
+          <p className="lead text-light mb-0" style={{ maxWidth: "600px" }}>
+            Predict water potability instantly with AI-powered analysis.
+          </p>
+        </div>
+        <div className="mt-3 mt-md-0">
+          <Link to="/" className="btn btn-outline-light btn-lg">
+            Home
+          </Link>
+        </div>
       </header>
 
       {/* Main Card */}
-      <main className="flex-grow-1 d-flex align-items-center justify-content-center px-3">
+      <main className="flex-grow-1 d-flex align-items-center justify-content-center px-3 py-4">
         <div
-          className="card shadow-lg border-0 p-5 bg-light w-100"
+          className="card shadow-lg border-0 p-4 bg-light w-100"
           style={{
-            borderRadius: "0",
-            maxWidth: "900px",
+            borderRadius: "12px",
+            maxWidth: "800px",
             minWidth: "300px",
           }}
         >
           <h2 className="fw-bold mb-4 text-success text-center">
-            Water Quality Prediction
+            Water Quality Parameters
           </h2>
           <p className="text-muted text-center mb-4">
-            Adjust the parameters below using sliders or inputs and check if
-            water is potable.
+            Enter the values below and predict water potability.
           </p>
 
-          {/* Sliders and inputs */}
-          {Object.keys(data).map((key) => (
-            <div key={key} className="mb-3">
-              <label className="form-label fw-bold text-dark">{key}</label>
-              {["ph", "Hardness", "Solids", "Chloramines", "Sulfate", "Conductivity", "Organic_carbon", "Trihalomethanes", "Turbidity"].includes(key) ? (
-                <input
-                  type="range"
-                  className="form-range"
-                  name={key}
-                  min={key === "ph" ? 0 : 0}
-                  max={key === "ph" ? 14 : 1000}
-                  step={key === "ph" ? 0.1 : 1}
-                  value={data[key]}
-                  onChange={handleChange}
-                />
-              ) : (
+          {/* Inputs */}
+          <div className="row g-3">
+            {Object.keys(data).map((key) => (
+              <div key={key} className="col-6 col-md-4">
+                <label className="form-label fw-bold text-dark">{key}</label>
                 <input
                   type="number"
                   className="form-control"
@@ -96,14 +89,13 @@ export default function WaterQuality() {
                   value={data[key]}
                   onChange={handleChange}
                 />
-              )}
-              <small className="text-muted">{data[key]}</small>
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
 
           {/* Submit Button */}
           <button
-            className="btn btn-success btn-lg w-100 mt-3"
+            className="btn btn-success btn-lg w-100 mt-4"
             onClick={handleSubmit}
             disabled={loading}
           >
@@ -127,3 +119,4 @@ export default function WaterQuality() {
     </div>
   );
 }
+

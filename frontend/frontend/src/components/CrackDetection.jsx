@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import api from "../services/api";
 
 export default function CrackDetection() {
@@ -59,20 +60,26 @@ export default function CrackDetection() {
         overflowX: "hidden",
       }}
     >
-      {/* Header */}
-      <header className="py-4 text-center px-3">
-        <h1 className="display-4 fw-bold">AI Structural Crack Detection</h1>
-        <p className="lead mx-auto mb-0" style={{ maxWidth: "1200px" }}>
-          Upload or drag-and-drop an image of a building, bridge, or road. Our AI
-          will detect cracks instantly.
-        </p>
+      {/* Header with Home button */}
+      <header className="d-flex flex-column flex-md-row align-items-center justify-content-between py-4 px-3 mx-auto w-100" style={{ maxWidth: "1200px" }}>
+        <div>
+          <h1 className="display-5 fw-bold mb-2 mb-md-0">AI Structural Crack Detection</h1>
+          <p className="lead text-light mb-0" style={{ maxWidth: "600px" }}>
+            Upload or drag-and-drop an image of a building, bridge, or road. Our AI detects cracks instantly.
+          </p>
+        </div>
+        <div className="mt-3 mt-md-0">
+          <Link to="/" className="btn btn-outline-light btn-lg">
+            Home
+          </Link>
+        </div>
       </header>
 
       {/* Main Card */}
-      <main className="flex-grow-1 d-flex align-items-center justify-content-center px-3">
+      <main className="flex-grow-1 d-flex align-items-center justify-content-center px-3 py-4">
         <div
           className="card shadow-lg border-0 p-5 bg-light w-100"
-          style={{ borderRadius: "0", maxWidth: "900px", minWidth: "300px" }}
+          style={{ borderRadius: "12px", maxWidth: "900px", minWidth: "300px" }}
         >
           <h2 className="fw-bold mb-4 text-primary text-center">
             Detect Structural Cracks
@@ -81,7 +88,7 @@ export default function CrackDetection() {
             Drag & drop an image or click to upload
           </p>
 
-          {/* Stylish Drag & Drop */}
+          {/* Drag & Drop */}
           <div
             onDrop={handleDrop}
             onDragOver={handleDragOver}
@@ -120,7 +127,7 @@ export default function CrackDetection() {
             )}
           </div>
 
-          {/* Hidden Input */}
+          {/* Hidden File Input */}
           <input
             id="fileInput"
             type="file"
