@@ -26,9 +26,9 @@ app.add_middleware(
 )
 
 
-model = load_model("/app/saved_models/crack_classifier")
-water_quality_model = load_model("/app/saved_models/water_quality_model")
-scaler = joblib.load("/app/saved_models/water_scaler.pkl") 
+model = load_model("app/app/saved_models/crack_classifier")
+water_quality_model = load_model("app/app/saved_models/water_quality_model")
+scaler = joblib.load("app/app/saved_models/water_scaler.pkl") 
 # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # # Models folder path
@@ -85,4 +85,4 @@ async def predict_water_quality(data: dict):
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 10000))  # use Render's PORT
-    uvicorn.run("app.main:app", host="0.0.0.0", port=port)
+    uvicorn.run("app.app.main:app", host="0.0.0.0", port=port)

@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 10000
 
 # Run uvicorn with the correct path to main.py
-CMD uvicorn app.main:app --host 0.0.0.0 --port $PORT
+CMD uvicorn app.app.main:app --host 0.0.0.0 --port $PORT
