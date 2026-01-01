@@ -25,15 +25,15 @@ app.add_middleware(
     allow_headers=["*"],          # allow all headers
 )
 
-model = load_model("saved_models/crack_classifier")
-water_quality_model = load_model("saved_models/water_quality_model")
-scaler = joblib.load("saved_models/water_scaler.pkl") 
-# ROOT_DIR = os.path.dirname(os.path.dirname(__file__))  # one level above app/
-# MODEL_DIR = os.path.join(ROOT_DIR, "saved_models")
+# model = load_model("saved_models/crack_classifier")
+# water_quality_model = load_model("saved_models/water_quality_model")
+# scaler = joblib.load("saved_models/water_scaler.pkl") 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # /app/app
+MODEL_DIR = os.path.join(BASE_DIR, "saved_models")
 
-# model = load_model(os.path.join(MODEL_DIR, "crack_classifier"))
-# water_quality_model = load_model(os.path.join(MODEL_DIR, "water_quality_model"))
-# scaler = joblib.load(os.path.join(MODEL_DIR, "water_scaler.pkl"))
+model = load_model(os.path.join(MODEL_DIR, "crack_classifier"))
+water_quality_model = load_model(os.path.join(MODEL_DIR, "water_quality_model"))
+scaler = joblib.load(os.path.join(MODEL_DIR, "water_scaler.pkl"))
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
