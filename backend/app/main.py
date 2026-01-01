@@ -26,9 +26,9 @@ app.add_middleware(
 )
 
 
-model = load_model("app/app/saved_models/crack_classifier")
-water_quality_model = load_model("app/app/saved_models/water_quality_model")
-scaler = joblib.load("app/app/saved_models/water_scaler.pkl") 
+model = load_model("/app/saved_models/crack_classifier")
+water_quality_model = load_model("/app/saved_models/water_quality_model")
+scaler = joblib.load("/app/saved_models/water_scaler.pkl") 
 # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # # Models folder path
