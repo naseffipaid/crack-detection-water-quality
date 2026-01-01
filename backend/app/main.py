@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile, File
+from fastapi.middleware.cors import CORSMiddleware
 from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
@@ -6,6 +7,22 @@ import io
 import joblib
 
 app = FastAPI()
+
+# --- CORS setup ---
+origins = [
+    "http://localhost:5173",  # your React dev server
+    "http://127.0.0.1:5173",
+    # Add your production domain later if needed
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,        # allow React app
+    allow_credentials=True,
+    allow_methods=["*"],          # allow all HTTP methods
+    allow_headers=["*"],          # allow all headers
+)
+
 model = load_model("saved_models/crack_classifier")
 water_quality_model = load_model("saved_models/water_quality_model")
 scaler = joblib.load("saved_models/water_scaler.pkl") 
