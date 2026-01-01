@@ -82,7 +82,7 @@ async def predict_water_quality(data: dict):
     }
 
 
-if __name__ == "__main__":
-    import uvicorn
-    port = int(os.environ.get("PORT", 10000))  # use Render's PORT
-    uvicorn.run("app.app.main:app", host="0.0.0.0", port=port)
+# if __name__ == "__main__":
+#     import uvicorn
+#     port = int(os.environ.get("PORT", 10000))  # use Render's PORT
+#     uvicorn.run("app.main:app", host="0.0.0.0", port=port)
