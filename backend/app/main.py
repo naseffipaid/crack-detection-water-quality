@@ -25,15 +25,24 @@ app.add_middleware(
     allow_headers=["*"],          # allow all headers
 )
 
-# model = load_model("saved_models/crack_classifier")
-# water_quality_model = load_model("saved_models/water_quality_model")
-# scaler = joblib.load("saved_models/water_scaler.pkl") 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # /app/app
-MODEL_DIR = os.path.join(BASE_DIR, "saved_models")
 
-model = load_model(os.path.join(MODEL_DIR, "crack_classifier"))
-water_quality_model = load_model(os.path.join(MODEL_DIR, "water_quality_model"))
-scaler = joblib.load(os.path.join(MODEL_DIR, "water_scaler.pkl"))
+model = load_model("app/app/saved_models/crack_classifier")
+water_quality_model = load_model("app/app/saved_models/water_quality_model")
+scaler = joblib.load("app/app/saved_models/water_scaler.pkl") 
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# # Models folder path
+# MODEL_DIR = os.path.join(BASE_DIR, "saved_models")
+
+# print("BASE_DIR:", BASE_DIR)
+# print("MODEL_DIR:", MODEL_DIR)
+# print("Saved models:", os.listdir(MODEL_DIR))
+
+# # Load models
+# model = load_model(os.path.join(MODEL_DIR, "crack_classifier"))
+# water_quality_model = load_model(os.path.join(MODEL_DIR, "water_quality_model"))
+# scaler = joblib.load(os.path.join(MODEL_DIR, "water_scaler.pkl"))
+
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
@@ -72,8 +81,8 @@ async def predict_water_quality(data: dict):
         "confidence": float(pred)
     }
 
-# --- Run uvicorn when container starts ---
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 10000))  # use Render's PORT
-    uvicorn.run("main:app", host="0.0.0.0", port=port)
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port)
