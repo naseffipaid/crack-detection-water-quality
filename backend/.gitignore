@@ -1,18 +1,15 @@
-# ================================
 # Python
-# ================================
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
 *.so
+.Python
 *.egg-info/
 *.egg
 *.log
 
-# ================================
 # Virtual Environments
-# ================================
 env/
 venv/
 .venv/
@@ -21,63 +18,25 @@ conda_env/
 .env
 .env.*
 
-# ================================
 # Jupyter / IPython
-# ================================
 .ipynb_checkpoints/
-*.ipynb
 
-# ================================
-# Machine Learning / Data
-# ================================
-data/
-dataset/
-datasets/
-*.csv
-*.xlsx
-*.json
-*.parquet
-*.h5
-*.hdf5
-
-# ================================
-# Trained Models (VERY IMPORTANT)
-# ================================
-# saved_models/
-# *.h5
-# *.keras
-# *.joblib
-# *.pkl
-# *.onnx
-
-# ================================
-# TensorFlow / PyTorch cache
-# ================================
-__pycache__/
-*.ckpt
-*.pb
-events.out.tfevents.*
-
-# ================================
 # VS Code / IDE
-# ================================
 .vscode/
 .idea/
 *.code-workspace
 
-# ================================
 # OS files
-# ================================
 .DS_Store
 Thumbs.db
 
-# ================================
-# Logs
-# ================================
-*.log
-
-# ================================
 # Build / dist
-# ================================
 build/
 dist/
+
+# Data (exclude but allow models)
+data/
+*.csv
+*.xlsx
+*.json
+*.parquet

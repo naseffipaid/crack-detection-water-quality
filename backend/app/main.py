@@ -132,9 +132,10 @@ if os.path.exists(MODEL_DIR):
     print(f"Crack model exists: {os.path.exists(crack_path)}")
     if os.path.exists(crack_path):
         print(f"Contents of crack_classifier: {os.listdir(crack_path)}")
+
 print("=" * 50)
 
-# Load models
+
 try:
     # Correct path for Docker container
     crack_model_path = os.path.join(MODEL_DIR, "crack_classifier")
