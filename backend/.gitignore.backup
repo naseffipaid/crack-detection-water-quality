@@ -1,0 +1,92 @@
+# ================================
+# Python
+# ================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+*.log
+
+# ================================
+# Virtual Environments
+# ================================
+env/
+venv/
+.venv/
+crack_cpu/
+conda_env/
+.env
+.env.*
+
+# ================================
+# Jupyter / IPython
+# ================================
+.ipynb_checkpoints/
+*.ipynb
+
+# ================================
+# Machine Learning / Data
+# ================================
+# data/
+# dataset/
+# datasets/
+*.csv
+*.xlsx
+*.json
+*.parquet
+# *.h5                    # Comment out or remove this line
+# *.hdf5
+
+# ================================
+# Trained Models (VERY IMPORTANT)
+# ================================
+# Keep these COMMENTED or REMOVE them to track model files
+# saved_models/
+# *.h5
+# *.keras
+# *.joblib
+# *.pkl
+# *.onnx
+
+# ================================
+# TensorFlow / PyTorch cache
+# ================================
+# __pycache__/           # Already above
+*.ckpt
+# *.pb                   # COMMENT THIS OUT - it's blocking saved_model.pb!
+events.out.tfevents.*
+
+# ================================
+# VS Code / IDE
+# ================================
+.vscode/
+.idea/
+*.code-workspace
+
+# ================================
+# OS files
+# ================================
+.DS_Store
+Thumbs.db
+
+# ================================
+# Logs
+# ================================
+*.log
+
+# ================================
+# Build / dist
+# ================================
+build/
+dist/
+
+# ================================
+# EXCEPTIONS - Files we DO want to track
+# ================================
+!app/saved_models/
+!app/saved_models/*.pkl
+!app/saved_models/**/*.pb
+!app/saved_models/**/*.h5
